@@ -1,0 +1,1 @@
+C:\Users\Kerfoer\source\repos\BankingManager\bankingmanager.client\obj\Debug\bankingmanager.client.esproj.CoreCompileInputs.cache
