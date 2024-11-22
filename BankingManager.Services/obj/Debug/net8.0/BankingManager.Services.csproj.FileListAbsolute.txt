@@ -1,0 +1,16 @@
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\bin\Debug\net8.0\BankingManager.Services.deps.json
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\bin\Debug\net8.0\BankingManager.Services.dll
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\bin\Debug\net8.0\BankingManager.Services.pdb
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\obj\Debug\net8.0\BankingManager.Services.csproj.AssemblyReference.cache
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\obj\Debug\net8.0\BankingManager.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\obj\Debug\net8.0\BankingManager.Services.AssemblyInfoInputs.cache
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\obj\Debug\net8.0\BankingManager.Services.AssemblyInfo.cs
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\obj\Debug\net8.0\BankingManager.Services.csproj.CoreCompileInputs.cache
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\obj\Debug\net8.0\BankingManager.Services.sourcelink.json
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\obj\Debug\net8.0\BankingManager.Services.dll
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\obj\Debug\net8.0\refint\BankingManager.Services.dll
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\obj\Debug\net8.0\BankingManager.Services.pdb
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\obj\Debug\net8.0\ref\BankingManager.Services.dll
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\bin\Debug\net8.0\BankingManager.Database.dll
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\bin\Debug\net8.0\BankingManager.Database.pdb
+C:\Users\Kerfoer\source\repos\BankingManager\BankingManager.Services\obj\Debug\net8.0\BankingM.0E41596F.Up2Date
