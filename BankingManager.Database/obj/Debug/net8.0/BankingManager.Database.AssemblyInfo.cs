@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankingManager.Database")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2268ea1cbf8d9a8fd22ebf7726a3abcaff38b358")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b59285f3df4a51e7a6e18bf6cd0fb8a5a9cd4b0e")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankingManager.Database")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankingManager.Database")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
