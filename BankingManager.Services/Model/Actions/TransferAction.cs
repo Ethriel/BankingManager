@@ -2,7 +2,9 @@
 {
     public class TransferAction
     {
-        public BankAccountAction FromAccount { get; set; }
-        public BankAccountAction ToAccount { get; set; }
+        public string FromAccountNumber { get; set; }
+        public string ToAccountNumber { get; set; }
+        public string Currency { get; set; }
+        public double Ammount { get; set; }
     }
 }

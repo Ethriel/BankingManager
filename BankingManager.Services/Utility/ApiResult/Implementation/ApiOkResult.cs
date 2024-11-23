@@ -6,12 +6,12 @@
 
         public ApiOkResult() { }
 
-        public ApiOkResult(ApiResultStatus apiResultStatus = ApiResultStatus.Ok, string message = null, object data = null)
+        public ApiOkResult(ApiResultStatus apiResultStatus = ApiResultStatus.Ok, string message = "Success", object data = null)
         {
             SetOkResult(apiResultStatus, message, data);
         }
 
-        public void SetOkResult(ApiResultStatus apiResultStatus = ApiResultStatus.Ok, string message = null, object data = null)
+        public void SetOkResult(ApiResultStatus apiResultStatus = ApiResultStatus.Ok, string message = "Success", object data = null)
         {
             ApiResultStatus = apiResultStatus;
             Data = data;

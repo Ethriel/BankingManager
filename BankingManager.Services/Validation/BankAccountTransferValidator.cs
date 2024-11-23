@@ -5,12 +5,11 @@ namespace BankingManager.Services.Validation
 {
     public class BankAccountTransferValidator : AbstractValidator<TransferAction>
     {
-        public BankAccountTransferValidator(BankAccountActionValidator bankAccountActionValidator)
+        public BankAccountTransferValidator(AccountNumberValidator accountNumberValidator, AmmountValidator ammountValidator)
         {
-            RuleFor(transfer => transfer.FromAccount).NotNull()
-                                                     .SetValidator(bankAccountActionValidator);
-            RuleFor(transfer => transfer.ToAccount).NotNull()
-                                                   .SetValidator(bankAccountActionValidator);
+            RuleFor(transfer => transfer.FromAccountNumber).SetValidator(accountNumberValidator);
+            RuleFor(transfer => transfer.ToAccountNumber).SetValidator(accountNumberValidator);
+            RuleFor(transfer => transfer.Ammount).SetValidator(ammountValidator);
         }
     }
 }
