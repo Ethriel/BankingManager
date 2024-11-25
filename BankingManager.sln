@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankingManager.Server", "Ba
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "bankingmanager.client", "bankingmanager.client\bankingmanager.client.esproj", "{C6430114-610F-4973-8434-B0D7363D7B12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingManager.Database", "BankingManager.Database\BankingManager.Database.csproj", "{A7822686-664C-4CAA-B1C8-B388D17E543B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankingManager.Database", "BankingManager.Database\BankingManager.Database.csproj", "{A7822686-664C-4CAA-B1C8-B388D17E543B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingManager.Services", "BankingManager.Services\BankingManager.Services.csproj", "{39038F41-C486-43BE-8754-352264347B20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankingManager.Services", "BankingManager.Services\BankingManager.Services.csproj", "{39038F41-C486-43BE-8754-352264347B20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingManager.Tests", "BankingManager.Tests\BankingManager.Tests.csproj", "{F6B9E1B3-1933-42F6-94E0-EE9AE8E8FE8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{39038F41-C486-43BE-8754-352264347B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39038F41-C486-43BE-8754-352264347B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39038F41-C486-43BE-8754-352264347B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6B9E1B3-1933-42F6-94E0-EE9AE8E8FE8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6B9E1B3-1933-42F6-94E0-EE9AE8E8FE8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6B9E1B3-1933-42F6-94E0-EE9AE8E8FE8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6B9E1B3-1933-42F6-94E0-EE9AE8E8FE8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

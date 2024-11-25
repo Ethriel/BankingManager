@@ -6,10 +6,11 @@ namespace BankingManager.Database
 {
     public class BankingManagerDbContext : DbContext
     {
-        public DbSet<BankAccount> BankAccounts { get; set; }
-        public IConfiguration Configuration { get; set; }
+        public virtual DbSet<BankAccount> BankAccounts { get; set; }
+        public virtual IConfiguration Configuration { get; set; }
+        public BankingManagerDbContext() { }
         public BankingManagerDbContext(IConfiguration configuration) : base() { Configuration = configuration; }
-        public BankingManagerDbContext(DbContextOptions options, IConfiguration configuration) : base(options) 
+        public BankingManagerDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             Configuration = configuration;
         }
