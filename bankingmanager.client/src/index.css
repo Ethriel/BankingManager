@@ -46,12 +46,73 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+
+button:hover:enabled {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.button-upload:enabled {
+  background-color: #0ef506;
+}
+
+.button-update:enabled {
+  background-color: #069df5;
+}
+
+.button-remove {
+  background-color: #f50626;
+}
+
+input:hover {
+  border-color: #646cff;
+}
+
+input:focus,
+input:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+table {
+  table-layout: fixed;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.table th.up {
+  background-image: url("./images/up_arrow.png");
+}
+
+.table th.down {
+  background-image: url("./images/down_arrow.png");
+}
+
+.table th.default {
+  background-image: url("./images/default.png");
+}
+
+th.up,
+th.default,
+th.down {
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.table td {
+  border-top: 1px solid #ddd;
+  padding: 8px 20px;
+}
+
+.table tbody tr:first-child td {
+  border-top: none;
 }
 
 @media (prefers-color-scheme: light) {

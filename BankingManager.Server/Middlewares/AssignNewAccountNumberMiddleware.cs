@@ -4,19 +4,14 @@ using BankingManager.Services.Model;
 
 namespace BankingManager.Server.Middlewares
 {
-    public class AssignNewAccountNumberMiddleware
+    public class AssignNewAccountNumberMiddleware(RequestDelegate next)
     {
-        private readonly RequestDelegate _next;
-
-        public AssignNewAccountNumberMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
+        private readonly RequestDelegate _next = next;
 
         public async Task InvokeAsync(HttpContext context)
         {
             if (context.Request.Method == HttpMethods.Post &&
-                context.Request.Path.StartsWithSegments("/bank-account/add"))
+                context.Request.Path.StartsWithSegments("/bank-account/create"))
             {
                 context.Request.EnableBuffering();
                 var bodyAsText = await new StreamReader(context.Request.Body).ReadToEndAsync();
@@ -27,7 +22,8 @@ namespace BankingManager.Server.Middlewares
                     var jsonSerializerOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
                     var account = JsonSerializer.Deserialize<BankAccountDTO>(bodyAsText, jsonSerializerOptions);
 
-                    if (string.IsNullOrWhiteSpace(account?.Number))
+                    // The "string" check is for Swagger if a person forgets to send an empty account number and sends a default for Swagger one
+                    if (string.IsNullOrWhiteSpace(account?.Number) || account?.Number == "string")
                     {
                         account.Number = Guid.NewGuid().ToString();
                         var updatedBody = JsonSerializer.Serialize(account);

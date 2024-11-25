@@ -4,7 +4,7 @@ using BankingManager.Services.Utility.ApiResult;
 
 namespace BankingManager.Services
 {
-    public interface IBankingAccountService
+    public interface IBankAccountService
     {
         IApiResult AddBankAccount(BankAccountDTO bankAccount);
         Task<IApiResult> AddBankAccountAsync(BankAccountDTO bankAccount);

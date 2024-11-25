@@ -19,7 +19,14 @@
         /// <summary>
         /// Use string.Format() and pass an an identifier as parameter: either account number or id
         /// </summary>
-        public readonly static string DoesNotExist = $"{DeleteErrorBase}. Account does not exist! {IdentifierPlaceholder}";
+        /// /// <summary>
+        /// Use string.Format() and pass an an identifier as parameter: either account number or id
+        /// </summary>
+        public readonly static string DeleteDoesNotExist = $"{DeleteErrorBase}. Account does not exist! {IdentifierPlaceholder}";
+        /// /// <summary>
+        /// Use string.Format() and pass an an identifier as parameter: either account number or id
+        /// </summary>
+        public readonly static string DoesNotExist = $"Account does not exist! {IdentifierPlaceholder}";
         /// <summary>
         /// Use string.Format() and pass an identifier as parameter: either account number or id
         /// </summary>
@@ -38,6 +45,9 @@
         /// Also use string.Format(), where additional parameters are: |2| - balance of |0| and |3| - transfer ammount
         /// </summary>
         public readonly static string TransferBalanceError = $"{TransferErrorBase}. |{{0}}| balance: |{{2}}|, transfer ammount: |{{3}}|";
+        /// <summary>
+        /// Use string.Format() and pass account number as parameter
+        /// </summary>
         public readonly static string UpdateErrorBase = "Could not update an account |{0}|";
     }
 }

@@ -1,9 +1,12 @@
 
 using BankingManager.Database;
+using BankingManager.Server.Extensions;
+using BankingManager.Server.Middlewares;
 using BankingManager.Services.Model.Mapper;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 namespace BankingManager.Server
 {
@@ -12,15 +15,28 @@ namespace BankingManager.Server
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Logging.AddConsole();
             builder.Services.AddSingleton<IConfiguration>(provider => builder.Configuration);
 
             // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen().AddDbContext<BankingManagerDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")))
-                            .AddAutoMapper(typeof(BankAccountMapperProfile));
+            builder.Services.AddValidators()
+                            .AddCors()
+                            .AddEndpointsApiExplorer()
+                            .AddSwaggerGen()
+                            .AddDbContext<BankingManagerDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")))
+                            .AddAutoMapper(typeof(BankAccountMapperProfile))
+                            .AddAppServices()
+                            .AddFluentValidationAutoValidation(config =>
+                            {
+                                config.DisableBuiltInModelValidation = true;
+                                config.ValidationStrategy = SharpGrip.FluentValidation.AutoValidation.Mvc.Enums.ValidationStrategy.Annotations;
+                                config.EnableBodyBindingSourceAutomaticValidation = true;
+                                config.EnableFormBindingSourceAutomaticValidation = true;
+                                config.EnableQueryBindingSourceAutomaticValidation = true;
+                            });
 
             var app = builder.Build();
 
@@ -49,6 +65,8 @@ namespace BankingManager.Server
 
                 await context.Response.WriteAsync(result);
             }));
+
+            app.UseMiddleware<AssignNewAccountNumberMiddleware>();
 
             app.UseHttpsRedirection();
 

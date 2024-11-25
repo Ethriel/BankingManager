@@ -9,8 +9,8 @@ namespace BankingManager.Services.Validation
         {
             var currencies = Enum.GetNames(typeof(Currency));
             RuleFor(prop => prop)
-                .Must(value => Enum.TryParse(value, out Currency currency))
-                .WithMessage($"Currency type is not valid! Expected: |{string.Join(" ", currencies)}|");
+                .MustAsync(async (value, cancellation) => await Task.FromResult(Enum.TryParse(value, out Currency currency)))
+                .WithMessage($"Currency type is not valid! Expected: |{string.Join(", ", currencies)}|");
         }
     }
 }

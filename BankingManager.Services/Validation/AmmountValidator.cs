@@ -7,7 +7,7 @@ namespace BankingManager.Services.Validation
         public AmmountValidator()
         {
             RuleFor(prop => prop)
-                .GreaterThanOrEqualTo(0)
+                .MustAsync(async (value, cancellation) => await Task.FromResult(value >= 0))
                 .WithMessage("Ammount can't be lower than zero!");
         }
     }

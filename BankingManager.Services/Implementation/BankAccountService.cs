@@ -8,16 +8,16 @@ using Microsoft.Extensions.Logging;
 
 namespace BankingManager.Services
 {
-    public class BankingAccountService : IBankingAccountService
+    public class BankAccountService : IBankAccountService
     {
         private readonly IEntityExtendedService<BankAccount> bankAccountService;
         private readonly IMapperService<BankAccount, BankAccountDTO> mapperService;
-        private readonly ILogger<IBankingAccountService> logger;
+        private readonly ILogger<IBankAccountService> logger;
 
-        public BankingAccountService
+        public BankAccountService
             (IEntityExtendedService<BankAccount> bankAccountService,
             IMapperService<BankAccount, BankAccountDTO> mapperService,
-            ILogger<IBankingAccountService> logger)
+            ILogger<IBankAccountService> logger)
         {
             this.bankAccountService = bankAccountService;
             this.mapperService = mapperService;
@@ -228,8 +228,19 @@ namespace BankingManager.Services
                     var fromAccountDto = mapperService.MapDto(fromAccount);
                     var toAccountDto = mapperService.MapDto(toAccount);
 
-                    apiResult = UpdateBankAccount(fromAccountDto);
-                    apiResult = UpdateBankAccount(toAccountDto);
+                    var updateFromResult = UpdateBankAccount(fromAccountDto);
+                    var updateToResult = UpdateBankAccount(toAccountDto);
+
+                    if (updateFromResult is IApiOkResult && updateToResult is IApiOkResult)
+                    {
+                        apiResult = new ApiOkResult(message: $"Successfully trasfered money from {fromAccountDto.Number} to {toAccountDto.Number}");
+                    }
+                    else
+                    {
+                        string[] errors = [.. (updateFromResult as IApiErrorResult)?.Errors, .. (updateToResult as IApiErrorResult)?.Errors];
+                        var errorMessage = string.Format(ErrorMessages.TransferErrorBase, fromAccount.Number, toAccount.Number);
+                        apiResult = new ApiErrorResult(loggerErrorMessage: errorMessage, errorMessage: errorMessage, errors: errors);
+                    }
                 }
             }
 
@@ -245,7 +256,7 @@ namespace BankingManager.Services
         {
             var apiResult = default(IApiResult);
 
-            var existingAccountResult = ValidateExistingAccount(accountId: bankAccount.Id);
+            var existingAccountResult = ValidateExistingAccount(accountNumber: bankAccount.Number);
 
             if (!existingAccountResult.IsValid)
             {
@@ -300,7 +311,17 @@ namespace BankingManager.Services
                 {
                     account.Balance -= bankAccountAction.Ammount;
                     var accountDto = mapperService.MapDto(account);
-                    apiResult = UpdateBankAccount(accountDto);
+                    var updateResult = UpdateBankAccount(accountDto);
+
+                    if (updateResult is IApiOkResult okResult)
+                    {
+                        apiResult = new ApiOkResult(message: "Successfully withdrawn money from account", data: okResult.Data);
+                    }
+                    else
+                    {
+                        var errorResult = updateResult as IApiErrorResult;
+                        apiResult = new ApiErrorResult(loggerErrorMessage: errorResult?.LoggerMessage, errors: errorResult?.Errors);
+                    }
                 }
             }
 
@@ -415,6 +436,14 @@ namespace BankingManager.Services
                 {
                     IsValid = true
                 };
+        }
+        private IApiResult ApiResultFromUpdateResult(IApiResult updateResult, string message)
+        {
+            var apiResult = default(IApiResult);
+
+            return (updateResult is IApiOkResult okResult) ?
+                new ApiOkResult(message: message, data: okResult.Data) :
+                new ApiErrorResult(loggerErrorMessage: ((IApiErrorResult)updateResult).LoggerMessage, errors: ((IApiErrorResult)updateResult).Errors);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace BankingManager.Services.Validation
         public AccountNumberValidator()
         {
             RuleFor(prop => prop)
-                .Must(value => Guid.TryParse(value, out Guid accountNumber))
+                .MustAsync(async (value, cancellation) => await Task.FromResult(Guid.TryParse(value, out Guid accountNumber)))
                 .WithMessage("Account number is not valid!");
         }
     }
